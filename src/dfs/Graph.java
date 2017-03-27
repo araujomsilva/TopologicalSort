@@ -105,19 +105,27 @@ class Main
 	public static void main(String args[])
     {
 
-        Graph g=new Graph(18);
-        String name = "C:\\DFS.txt";
+		Graph g = null;
+        String name = "C:\\Users\\marcelo.silva\\Downloads\\mediumG.txt";
+        Integer vertices;
 
         try {
 
             FileReader arq = new FileReader(name);
             BufferedReader fileReade = new BufferedReader(arq);
             String line = fileReade.readLine();
+            vertices = Integer.parseInt(line);
 
+            g = new Graph(vertices);
+            line = fileReade.readLine();
+            
+            System.out.println("Grafo criado com " + vertices +  " Vértices");
+            
             while (line != null){
 
                 System.out.println("line = " + line);
-                g.addEdge(Integer.parseInt(line.split(",")[0]),Integer.parseInt(line.split(",")[1]));
+                
+                g.addEdge(Integer.parseInt(line.split("\\s+")[0]),Integer.parseInt(line.split("\\s+")[1]));
                 line = fileReade.readLine();
             }
 
