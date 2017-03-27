@@ -6,6 +6,7 @@ import java.io.IOException;
 //A Java program to print topological sorting of a graph
 //using indegrees
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -36,6 +37,11 @@ class Graph
  // prints a Topological Sort of the complete graph  
  public void topologicalSort()
  {
+	 Double  t1,t2,tempoExecucao =(double) 0;
+
+	 t1 = (double) System.currentTimeMillis();
+	 Integer NUM_EXECUCOES = 0;
+	 
      // Create a array to store indegrees of all
      // vertices. Initialize all indegrees as 0.
      int indegree[] = new int[V];
@@ -82,8 +88,11 @@ class Graph
              if(--indegree[node] == 0)
                  q.add(node);
          }
+         NUM_EXECUCOES++;
          cnt++;
      }
+     
+      
       
      // Check if there was a cycle       
      if(cnt != V)
@@ -97,6 +106,13 @@ class Graph
      {
          System.out.print(i+" ");
      }
+     
+     t2 = (double) System.currentTimeMillis();
+     
+     tempoExecucao = (t2-t1)/1000;  // calcula o tempo de execucao (em segundos)
+
+     System.out.printf("\nTempo de Execucao: %12.9f segundos\n",tempoExecucao);
+
  }
 }
 //Driver program to test above functions
@@ -107,8 +123,8 @@ class Main
 
 		Graph g = null;
 		
-        String name = "C:\\Users\\marcelo.silva\\Downloads\\largeG.txt";
-        //String name = "C:\\Users\\marcelo.silva\\Downloads\\mediumG.txt";
+        //String name = "C:\\Users\\marcelo.silva\\Downloads\\largeG.txt";
+        String name = "C:\\Users\\marcelo.silva\\Downloads\\mediumG.txt";
         //String name = "C:\\Users\\marcelo.silva\\Downloads\\tinyG.txt";
         
         Integer vertices;
@@ -127,7 +143,7 @@ class Main
             
             while (line != null){
 
-                System.out.println("line = " + line);
+                //System.out.println("line = " + line);
                 
                 g.addEdge(Integer.parseInt(line.split("\\s+")[0]),Integer.parseInt(line.split("\\s+")[1]));
                 line = fileReade.readLine();
