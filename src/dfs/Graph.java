@@ -106,7 +106,11 @@ class Main
     {
 
 		Graph g = null;
-        String name = "C:\\Users\\marcelo.silva\\Downloads\\mediumG.txt";
+		
+        String name = "C:\\Users\\marcelo.silva\\Downloads\\largeG.txt";
+        //String name = "C:\\Users\\marcelo.silva\\Downloads\\mediumG.txt";
+        //String name = "C:\\Users\\marcelo.silva\\Downloads\\tinyG.txt";
+        
         Integer vertices;
 
         try {
